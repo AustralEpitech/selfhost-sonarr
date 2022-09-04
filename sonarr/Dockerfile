@@ -41,7 +41,4 @@ RUN apt-get update && apt-get install -y                 \
     apt-get clean &&                                     \
     rm -rf /var/lib/apt/
 COPY --from=build /Sonarr /app/
-CMD ["mono",                      \
-    "/app/Sonarr/bin/Sonarr.exe", \
-    "-nobrowser",                 \
-    "-data=/tv"]
+CMD ["mono", "/app/Sonarr.exe", "-nobrowser", "-data=/tv"]
