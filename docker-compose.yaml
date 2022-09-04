@@ -1,0 +1,35 @@
+---
+version: "3.5"
+
+services:
+  install_site:
+    build: install_site
+    ports:
+      - "80:80"
+    environment:
+      - BASE_URL=$BASE_URL
+      - EMAIL=$EMAIL
+    volumes:
+      - ./nginx.conf:/web/sonarr.conf
+      - sites-availables:/sites-availables
+      - certs:/etc/letsencrypt
+
+  sonarr:
+    build: ./sonarr
+    restart: always
+    volumes:
+      - /media/Shows:/tv
+    networks:
+      - default
+      - selfhost
+
+volumes:
+  sites-availables:
+    external: true
+  certs:
+    external: true
+
+networks:
+  default:
+  selfhost:
+    external: true
