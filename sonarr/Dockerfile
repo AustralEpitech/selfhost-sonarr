@@ -37,7 +37,8 @@ RUN apt-get update && apt-get install -y                 \
     libmono-system-xml-linq4.0-cil                       \
     libmono-system-xml4.0-cil                            \
     libmono-system4.0-cil                                \
-    mediainfo &&                                         \
+    mediainfo                                            \
+    transmission-cli &&                                  \
     apt-get clean &&                                     \
     rm -rf /var/lib/apt/
 COPY --from=build /Sonarr /app/
