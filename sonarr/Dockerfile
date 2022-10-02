@@ -15,7 +15,6 @@ RUN curl                                                                        
 
 FROM base
 WORKDIR /app/
-RUN useradd app
 RUN apt-get update && apt-get install -y                     \
         libmono-corlib4.5-cil                                \
         libmono-microsoft-csharp4.0-cil                      \
@@ -46,5 +45,6 @@ RUN apt-get update && apt-get install -y                     \
 COPY --from=build /app/ .
 COPY docker-entrypoint.sh /usr/local/bin/
 VOLUME /Shows/
+RUN useradd -m app
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mono", "Sonarr.exe", "-nobrowser", "-data=/Shows/"]
