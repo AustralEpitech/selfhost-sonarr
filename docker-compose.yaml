@@ -18,7 +18,8 @@ services:
     build: sonarr/
     restart: always
     volumes:
-      - /media/:/media/
+      - /media/:/data/
+      - config:/config/
     env_file:
       - .env
     networks:

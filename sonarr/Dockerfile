@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y                     \
     rm -rf /var/lib/apt/
 COPY --from=build /app/ .
 COPY docker-entrypoint.sh /usr/local/bin/
-VOLUME /Shows/
+VOLUME /data/ /config/
 RUN useradd -m app
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["mono", "Sonarr.exe", "-nobrowser", "-data=/media/"]
+CMD ["mono", "Sonarr.exe", "--nobrowser"]
