@@ -1,9 +1,9 @@
 ---
-version: "3.5"
+version: "3.7"
 
 services:
   install_site:
-    build: install_site
+    build: install_site/
     ports:
       - "80:80"
     environment:
@@ -15,10 +15,12 @@ services:
       - certs:/etc/letsencrypt
 
   sonarr:
-    build: ./sonarr
+    build: sonarr/
     restart: always
     volumes:
-      - /media/Shows:/tv
+      - /media/Shows/:/Shows/
+    env_file:
+      - .env
     networks:
       - default
       - selfhost
