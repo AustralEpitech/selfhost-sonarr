@@ -27,6 +27,7 @@ services:
       - selfhost
 
 volumes:
+  config:
   sites-availables:
     external: true
   certs:
