@@ -47,4 +47,4 @@ COPY docker-entrypoint.sh /usr/local/bin/
 VOLUME /data/ /config/
 RUN useradd -m app
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["mono", "Sonarr.exe", "--nobrowser"]
+CMD ["mono", "Sonarr.exe", "--nobrowser", "--data=/config"]
