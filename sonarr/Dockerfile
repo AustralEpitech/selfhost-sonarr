@@ -6,12 +6,10 @@ RUN apt-get update && apt-get install -y \
         curl &&                          \
     apt-get clean &&                     \
     rm -rf /var/lib/apt/
-RUN curl                                                                              \
-        -o sonarr.tar.gz                                                              \
-        -L 'https://services.sonarr.tv/v1/download/main/latest?version=3&os=linux' && \
-    tar -xf sonarr.tar.gz &&                                                          \
-    mv Sonarr/ /app/ &&                                                               \
-    rm sonarr.tar.gz
+RUN curl -L                                                                       \
+        'https://services.sonarr.tv/v1/download/main/latest?version=3&os=linux' | \
+    tar -xz &&                                                                    \
+    mv Sonarr/ /app/
 
 FROM base
 WORKDIR /app/
