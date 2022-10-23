@@ -44,5 +44,6 @@ COPY --from=build /app/ .
 COPY docker-entrypoint.sh /usr/local/bin/
 VOLUME /data/ /config/
 RUN useradd -m app
+EXPOSE 8989
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mono", "./Sonarr.exe", "--nobrowser", "--data=/config"]

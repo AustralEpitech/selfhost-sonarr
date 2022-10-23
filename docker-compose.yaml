@@ -3,7 +3,7 @@ version: "3.7"
 
 services:
   install_site:
-    build: install_site/
+    build: install_site
     ports:
       - "80:80"
     environment:
@@ -11,15 +11,15 @@ services:
       - EMAIL=$EMAIL
     volumes:
       - ./nginx.conf:/web/sonarr.conf
-      - sites-availables:/sites-availables
-      - certs:/etc/letsencrypt
+      - sites-availables:/sites-availables/
+      - certs:/etc/letsencrypt/
 
   sonarr:
-    build: sonarr/
+    build: sonarr
     restart: always
     volumes:
-      - /media/:/data/
       - config:/config/
+      - $MEDIA_PATH/:/data/
     env_file:
       - .env
     networks:
