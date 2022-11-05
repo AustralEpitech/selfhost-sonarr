@@ -1,4 +1,4 @@
-FROM debian as base
+FROM debian:11 as base
 ENV DEBIAN_FRONTEND=noninteractive
 
 FROM base as build
