@@ -16,7 +16,7 @@ services:
 
   sonarr:
     build: sonarr
-    restart: always
+    restart: unless_stopped
     volumes:
       - config:/config/
       - $MEDIA_PATH/:/data/
